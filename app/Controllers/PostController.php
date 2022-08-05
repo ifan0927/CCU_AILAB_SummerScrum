@@ -14,4 +14,19 @@ class PostController extends BaseController
     {
         return view('posts/newPost');
     }
+    public function store()
+    {
+        $data = [
+            'star_or_apply' => $this->request->getVar('star_or_apply'),
+            'category' => $this->request->getVar('category'),
+            'title' => $this->request->getVar('title'),
+            'content' => $this->request->getVar('content'),
+            'file' => $this->request->getVar('file'),
+            'link' => $this->request->getVar('link'),
+            'beginTime' => $this->request->getVar('beginTime'),
+            'endTime' => $this->request->getVar('endTime')
+        ];
+
+        print_r($data);
+    }
 }

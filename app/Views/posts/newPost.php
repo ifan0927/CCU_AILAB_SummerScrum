@@ -55,15 +55,16 @@
                     上架時間:<input name="beginTime" type="date"><br>
                     下架時間:<input name="endTime" type="date"><br>
                 </div>
-            </form>
-            <button onclick="showDialog();">發布</button>
+                <!--<button type="submit" class="btn btn-info">確定送出</button>-->
+            
+            <button type="button" onclick="showDialog();">發布</button>
             <div id="dialog" class="dialog">
                 確定發布?<br>
-                <button onclick="closeDialog();" class="close">再修改一下</button>
-                <!--<button style="submit">確定送出</button>-->
+                <button type="button" onclick="closeDialog();" class="close">再修改一下</button>
                 <button type="submit" class="btn btn-info">確定送出</button>
             </div>
-            <a href="index.php"><button class="btn btn-info">返回</button></a>
+            <a href="index.php"><button type="button" class="btn btn-info">返回</button></a>
         </div>
+        </form>
     </body>
 </html>
