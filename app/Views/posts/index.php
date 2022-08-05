@@ -1,5 +1,4 @@
 <h1>這裡是首頁</h1>
-123456
 
 <a href="/PostController/" class="btn btn-primary">公告系統</a>
 <a href="/PostController/" class="btn btn-primary">登入系統</a>
