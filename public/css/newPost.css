@@ -1,0 +1,10 @@
+.dialog{
+    position:fixed;top:100px;left:300px;width: 300px;
+    border: 2px solid;
+    background-color:gold;
+    padding: 3px;
+    display:none;
+}
+.dialog>.close{
+    padding: 2px;
+}

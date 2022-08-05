@@ -6,30 +6,8 @@
         <title>Bootstrap demo</title>
         <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         -->
-        <style>
-            .dialog{
-                position:fixed;top:100px;left:300px;width: 300px;
-                border: 2px solid;
-                background-color:gold;
-                padding: 3px;
-                display:none;
-            }
-            .dialog>.close{
-                padding: 2px;
-            }
-        </style>
-        <script>
-            var dialog;
-            window.onload=function(){
-                dialog=document.getElementById("dialog");
-            };
-            function showDialog(){
-                dialog.style.display="block";
-            }
-            function closeDialog(){
-                dialog.style.display="none";
-            }
-        </script>
+        <link rel="stylesheet" href="/css/newPost.css">
+        
     </head>
     <body>
         <h1>貼文建立!</h1>
@@ -68,3 +46,15 @@
         </form>
     </body>
 </html>
+<script>
+    var dialog;
+    window.onload=function(){
+        dialog=document.getElementById("dialog");
+    };
+    function showDialog(){
+        dialog.style.display="block";
+    }
+    function closeDialog(){
+        dialog.style.display="none";
+    }
+</script>
