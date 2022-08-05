@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Post;
 
 class PostController extends BaseController
 {
@@ -16,6 +17,8 @@ class PostController extends BaseController
     }
     public function store()
     {
+        $model = new Post();
+
         $data = [
             'star_or_apply' => $this->request->getVar('star_or_apply'),
             'category' => $this->request->getVar('category'),
@@ -27,6 +30,8 @@ class PostController extends BaseController
             'endTime' => $this->request->getVar('endTime')
         ];
 
-        print_r($data);
+        $YN = $model->save($data);
+
+        return redirect('PostController');
     }
 }
