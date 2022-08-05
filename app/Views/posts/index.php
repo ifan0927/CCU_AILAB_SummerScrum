@@ -1,6 +1,6 @@
 <h1>這裡是首頁</h1>
 
-<a href="/PostController/" class="btn btn-primary">公告系統</a>
+<a href="/PostController/newPost" class="btn btn-primary">公告系統</a>
 <a href="/PostController/" class="btn btn-primary">登入系統</a>
 <a href="/PostController/" class="btn btn-primary">控制系統</a>
 

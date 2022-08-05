@@ -10,4 +10,8 @@ class PostController extends BaseController
     {
         return view('posts/index');
     }
+    public function newPost()
+    {
+        return view('posts/newPost');
+    }
 }
