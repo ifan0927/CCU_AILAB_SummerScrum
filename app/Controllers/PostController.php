@@ -32,6 +32,25 @@ class PostController extends BaseController
 
         $YN = $model->save($data);
 
-        return redirect('PostController');
+        //return view('posts/article_list');
+        return redirect()->to('Postcontroller/article_list');
+    }
+    public function article_list()
+    {
+        $model = new Post();
+
+        $data = [
+            'posts' => $model->findAll()
+        ];
+
+        return view('posts/article_list',$data);
+    }
+    public function onlystar()
+    {
+        return view('posts/onlystar');
+    }
+    public function onlyapply()
+    {
+        return view('posts/onlyapply');
     }
 }

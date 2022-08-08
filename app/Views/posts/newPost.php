@@ -7,7 +7,8 @@
         <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         -->
         <link rel="stylesheet" href="/css/newPost.css">
-        
+        <script src="ckeditor/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
     </head>
     <body>
         <h1>貼文建立!</h1>
@@ -15,23 +16,35 @@
         -->
         <div>
             <form action="/PostController/store" enctype="mutipart/form-data" method="POST">
-                <div>系統選擇:
-                        <input type="radio" id="star_or_apply" name="star_or_apply" value="star"><label>繁星系統</lable>
-                        <input type="radio" id="star_or_apply" name="star_or_apply" value="apply"><label>個申系統</lable><br>
-                    文章種類***:
-                    <select name="category">
-                        <option value="1簡章訊息事項">簡章訊息事項</option>
+                <div>*系統選擇:
+                        <div required>
+                            <input type="radio" id="star_or_apply" name="star_or_apply" value="繁星"><label>繁星系統</lable>
+                            <input type="radio" id="star_or_apply" name="star_or_apply" value="個申"><label>個申系統</lable><br>
+                        </div>
+                        *文章種類:
+                        <select name="category" required>
+                        <option value="簡章訊息事項">簡章訊息事項</option>
                         <option value="招生事務">招生事務</option>
                         <option value="徵選資訊">徵選資訊</option>
                         <option value="會議簡報">會議簡報</option>
                         <option value="其他事項">其他事項</option>
                         </select><br>
-                    標題:<input name="title"><br>
-                    內容:<textarea name="content"></textarea><br>
+                    *標題:<input name="title" style="width: 300px;" required><br>
+                    *內容:<div id="content" name="content">
+                    <!--<textarea name="content" id="content" style="width: 400px;height: 100px;" required></textarea>-->
+                    </div>
+                    <script>
+                        ClassicEditor
+                        .create( document.querySelector( '#content' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                    </script>
+
                     選擇檔案:<input name="file" type="file"><br>
-                    新增連結:<input name="link" type="url"><br>
-                    上架時間:<input name="beginTime" type="date"><br>
-                    下架時間:<input name="endTime" type="date"><br>
+                    新增連結:<input name="link" type="url" style="width: 300px;"><br>
+                    *上架時間:<input name="beginTime" type="date" required><br>
+                    *下架時間:<input name="endTime" type="date" required><br>
                 </div>
                 <!--<button type="submit" class="btn btn-info">確定送出</button>-->
             
@@ -57,4 +70,5 @@
     function closeDialog(){
         dialog.style.display="none";
     }
+    
 </script>
