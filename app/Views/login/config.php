@@ -35,6 +35,8 @@ if(!$db){
   $sql =<<<EOF
       INSERT INTO USERS (ID,NAME,USERNAME,MAIL,PASSWORD)
       VALUES (1, 'andy', 'andylai', 'thpss88888@gmail.com','0989108582');
+      INSERT INTO USERS (ID,NAME,USERNAME,MAIL,PASSWORD)
+      VALUES (2, 'peter', 'peterwu', 'thpss77777@gmail.com','091233333');
 
 EOF;
 

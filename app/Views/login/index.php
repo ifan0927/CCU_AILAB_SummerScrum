@@ -13,7 +13,7 @@
 <div class="container">
   <h2>Log In/Sign Up</h2>
   <a href="/LoginController/registration" class="btn btn-primary">註冊</a>
-  <a href="/LoginController/login" class="btn btn-primary">登入系統</a>
+  <a href="/LoginController/login_page" class="btn btn-primary">登入系統</a>
 </div>
 
 </body>
