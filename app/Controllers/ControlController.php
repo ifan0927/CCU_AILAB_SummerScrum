@@ -42,10 +42,7 @@ class ControlController extends BaseController
 
         
         $YN = $model->save($data);
-
-        echo $YN;
-
-        return redirect()->to('ControlController/index');
+        //return redirect()->to('ControlController/index');
     }
 
     public function apply() //申請頁面

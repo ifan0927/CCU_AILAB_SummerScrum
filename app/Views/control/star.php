@@ -3,7 +3,7 @@
 <?=$this->section("content")?>
 
 <div class="container" align="center" style="margin-top:100px;"><!--主要容器-->
-<form name="addsys_star" action="/ControlController/star_store" enctype="multipart/form-data" method="post">
+<form name="addsys_star" action="onclick()" enctype="multipart/form-data" method="post">
   
   <div class="mb-3" align="center"> 
     *文章種類
@@ -26,20 +26,30 @@
   </div>
   <div class="mb-3" style="width:600px" align="center"><!--開始時間-->
     <label class="form-label">*開始時間</label>
-    <input type="date" class="form-control" name="sysstart_star" required>
+    <input type="date" class="form-control" name="sysstart_star" id="start" required>
   </div>
   <div class="mb-3" style="width:600px" align="center"><!--結束時間-->
     <label class="form-label">*結束時間</label>
-    <input type="date" class="form-control" name="sysend_star" required>
+    <input type="date" class="form-control" name="sysend_star" id="end "required>
   </div>
   
   <div class="mb-3 form-check"><!--備註-->
     <label class="form-check-label" for="exampleCheck1">*為必須輸入內容</label>
   </div>
   <div align="center">
-    <button type="submit" class="btn btn-primary" align="center">Submit</button>
+    <button  class="btn btn-primary" align="center">Submit</button>
   </div>
 </form>
 </div>
 
+<script>
+    function onclick(){
+    //var start = document.getElementById("start").value;
+    //var end = document.getElementById("end").value;
+      alert("test");
+    }
+</script>
+
 <?=$this->endSection()?>
+
+
