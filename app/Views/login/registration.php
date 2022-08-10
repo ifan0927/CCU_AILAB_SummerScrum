@@ -1,38 +1,3 @@
-<?php
-/*
-session_start();
-    
-   if (isset($_GET["add"])){
-      if($error!=1){
-               class MyDB extends SQLite3
-   {
-      function __construct()
-      {
-         $this->open('database.db');
-      }
-   }
-   $db = new MyDB();
-   if(!$db){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Opened database successfully\n";
-   }
-
-   $sql ="INSERT INTO USERS (ID,NAME,USERNAME,MAIL,PASSWORD)"."\n"."VALUES ('".$_GET["add"]."', '".$_POST["name"]."', '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["pwd"]."');";
-
-
-
-   $ret = $db->exec($sql);
-   if(!$ret){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successeful Registration!\n";
-   }
-   $db->close();
-}
-}
-*/
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,10 +30,10 @@ session_start();
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" name="pwd" placeholder="Enter password">
     </div>
-    <div class="checkbox">
-      <label><input type="checkbox"> Remember me</label>
+    <div class="back">
+      <a href="/LoginController/user_control" class="btn btn-default">返回</a>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit"  class="btn btn-primary">Submit</button>
   </form>
 </div>
 

@@ -22,8 +22,8 @@ class LoginController extends BaseController
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            session_start();
             $model = new User();
-            
             $data = $model->findAll();
             if(!$model){
                 echo $model->lastErrorMsg();
@@ -31,45 +31,47 @@ class LoginController extends BaseController
                 //echo "Opened database successfully<br/>\n";
              }
              
-             foreach($data as $data_item){
+            foreach($data as $data_item){
                 $id=$data_item['id'];
                 $username=$data_item['USERNAME'];
+                $name=$data_item['NAME'];
                 $password=$data_item['PASSWORD'];
+                $email=$data_item['MAIL'];
                 //echo"ID = ". $data_item['id'] . "<br/>\n";
                 //echo"user_name = ". $username . "<br/>\n";
                 //echo"password = ". $password . "<br/>\n";
-                
-             }
-             if ($id!=""){
-                if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]){
-                   $_SESSION["login"]=$username;
-                   echo "登入成功!!!!";
-                   return view('posts/index');
-                   //header('Location: index.php');    
-                }else{
-                  echo "Wrong Password";
-                }
-              }else{
-               echo "User not exist, please register to continue!";
-              }
+                if ($id!=""){
+                    if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]){
+                        $user_info=[
+                            $_SESSION["user"]=$username,
+                            $_SESSION["level"]=$name,
+                            $_SESSION["email"]=$email
+                        ];
+                       //echo "登入成功!!!!";
+                       return view('login/user_control',$user_info);
+                       
+                       
+                           
+                    }
+                    else{
+                        //return view('login/login_page');
+                    }
+                  }else{
+                   echo "User not exist, please register to continue!";
+                  }
+                  
+            }
+             
+             
            //echo "Operation done successfully\n";
              $model->close();
              
-        /*
-        $ret = $model->query($sql);
-        while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
-                $id=$row['ID'];
-                $username=$row["USERNAME"];
-                $password=$row['PASSWORD'];
-                //echo "ID = ". $username . "<br/>\n";
-                //echo "PASSWORD = ". $password ."<br/>\n";
-    
-             }
-             */
+        
         }
     }
     public function registration()
     {
+        
         return view('login/registration');
     }
     public function forgot_pw()
@@ -78,6 +80,8 @@ class LoginController extends BaseController
     }
     public function store()
     {
+        session_start();
+        
         $model = new User();
         $data = [
             'NAME' => $this ->request->getVar('name'),
@@ -87,8 +91,30 @@ class LoginController extends BaseController
 
         ];
         $users = $model->save($data);
-        echo "使用者創建成功";
+        return view('login/user_control');
         
+        
+    }
+    public function user_control()
+    {
+        session_start();
+        return view('login/user_control');
+    }
+    public function useradmin()
+    {
+        session_start();
+        return view('login/useradmin');
+    }
+    public function logout()
+    {
+        session_start();
+        $_SESSION['user']=NULL;
+        $_SESSION['level']=NULL;
+        $_SESSION['email']=NULL;
+        unset($_SESSION['user']);
+        unset($_SESSION['level']);
+        unset($_SESSION['email']);
+        return view('login/index');
     }
     
 }
