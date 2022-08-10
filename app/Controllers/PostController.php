@@ -34,6 +34,7 @@ class PostController extends BaseController
 
         //return view('posts/article_list');
         return redirect()->to('Postcontroller/article_list');
+        //print_r($data);
     }
     public function article_list()
     {

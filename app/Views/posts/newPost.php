@@ -30,17 +30,7 @@
                         <option value="其他事項">其他事項</option>
                         </select><br>
                     *標題:<input name="title" style="width: 300px;" required><br>
-                    *內容:<div id="content" name="content">
-                    <!--<textarea name="content" id="content" style="width: 400px;height: 100px;" required></textarea>-->
-                    </div>
-                    <script>
-                        ClassicEditor
-                        .create( document.querySelector( '#content' ) )
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                    </script>
-
+                    *內容:<textarea id="content" name="content"></textarea>
                     選擇檔案:<input name="file" type="file"><br>
                     新增連結:<input name="link" type="url" style="width: 300px;"><br>
                     *上架時間:<input name="beginTime" type="date" required><br>
@@ -71,4 +61,9 @@
         dialog.style.display="none";
     }
     
+    ClassicEditor
+    .create( document.querySelector( '#content' ) )
+    .catch( error => {
+        console.error( error );
+    } );
 </script>
