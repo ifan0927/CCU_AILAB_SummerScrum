@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\SysStar;
+use App\Models\Sysapply;
 
 class ControlController extends BaseController
 {
@@ -12,14 +13,16 @@ class ControlController extends BaseController
         return view('control/backindex');
     }
 
-    public function addsys()
-    {
-        return view('control/addsys');
-    }
+
 
     public function Test()
     {
         return view('Layout/backend_layout');
+    }
+
+    public function addsys() //資訊系統新增頁面
+    {
+        return view('control/addsys');
     }
 
     public function star() //繁星頁面
@@ -42,11 +45,45 @@ class ControlController extends BaseController
 
         
         $YN = $model->save($data);
-        //return redirect()->to('ControlController/index');
+        return redirect()->to('ControlController/index');
     }
 
     public function apply() //申請頁面
     {
         return view('control/apply');
     } 
+    public function apply_store() //申請儲存資料
+    {
+        $model = new Sysapply();
+
+        $data = [
+            'syscatagory_apply' => $this->request->getVar('syscatagory_apply'),
+            'systitle_apply' => $this->request->getVar('systitle_apply'),
+            'sysurl_apply' => $this->request->getVar('sysurl_apply'),
+            'syscontent_apply' => $this->request->getVar('syscontent_apply'),
+            'sysstart_apply' => $this->request->getVar('sysstart_apply'),
+            'sysend_apply' => $this->request->getVar('sysend_apply')
+        ];
+
+        print_r($data);
+        $YN = $model->save($data);
+        return redirect()->to('ControlController/index');
+    }
+
+    public function sysbrowse() // 資訊系統瀏覽頁面
+    {
+        $model_star = new SysStar();
+        $model_apply = new Sysapply();
+
+        $data = [ //抓取繁星,申請資料
+            's_posts' => $model_star->FindAll(),
+            'a_posts' => $model_apply->FindAll()
+        ];
+
+        
+        //print_r($apply);
+        return view('control/sysbrowse', $data);
+    }
+
+    
 }

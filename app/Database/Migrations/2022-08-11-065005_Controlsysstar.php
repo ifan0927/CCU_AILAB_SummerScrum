@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Controll extends Migration
+class Controlsysstar extends Migration
 {
     public function up()
     {
