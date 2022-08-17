@@ -49,7 +49,7 @@
       var start =new Date(document.getElementById("start").value);
       var end =new Date(document.getElementById("end").value);
       if (start >= end){
-        alert("error");
+        alert("開始時間不得晚於或等於結束時間");
         return false;
       }
       else{
