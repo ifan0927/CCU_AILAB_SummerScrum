@@ -54,4 +54,8 @@ class PostController extends BaseController
     {
         return view('posts/onlyapply');
     }
+    public function marquee()
+    {
+        return view('posts/marquee');
+    }
 }

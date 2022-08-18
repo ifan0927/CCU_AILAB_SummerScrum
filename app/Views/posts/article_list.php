@@ -10,7 +10,7 @@
         <script src="ckeditor/ckeditor.js"></script>
     </head>
     <body>
-        <h2>文章列表</h2>
+        <h2>全部文章列表</h2>
         <a href="/PostController/onlystar"><button type="button" class="btn btn-info">只顯示繁星系統</button></a>
         <a href="/PostController/onlyapply"><button type="button" class="btn btn-info">只顯示個申系統</button></a><br>
         <?php
@@ -21,5 +21,7 @@
                 ';
             }
         }
+        require("newPost.php");
+        $data=mysql_query("select * from title limit 0,10");
         ?>
     </body>

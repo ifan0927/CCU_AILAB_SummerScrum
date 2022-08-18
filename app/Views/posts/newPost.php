@@ -18,8 +18,8 @@
             <form id="form" action="/PostController/store" enctype="mutipart/form-data" method="POST">
                 <div>*系統選擇:
                         <div required>
-                            <input type="radio" id="star_or_apply" name="star_or_apply" value="繁星"><label>繁星系統</lable>
-                            <input type="radio" id="star_or_apply" name="star_or_apply" value="個申"><label>個申系統</lable><br>
+                            <input type="radio" id="star_or_apply" name="star_or_apply" value="1"><label>繁星系統</lable>
+                            <input type="radio" id="star_or_apply" name="star_or_apply" value="2"><label>個申系統</lable><br>
                         </div>
                         *文章種類:
                         <select name="category" required>
