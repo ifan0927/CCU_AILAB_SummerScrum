@@ -15,7 +15,7 @@
         <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         -->
         <div>
-            <form action="/PostController/store" enctype="mutipart/form-data" method="POST">
+            <form id="form" action="/PostController/store" enctype="mutipart/form-data" method="POST">
                 <div>*系統選擇:
                         <div required>
                             <input type="radio" id="star_or_apply" name="star_or_apply" value="繁星"><label>繁星系統</lable>
@@ -33,8 +33,8 @@
                     *內容:<textarea id="content" name="content"></textarea>
                     選擇檔案:<input name="file" type="file"><br>
                     新增連結:<input name="link" type="url" style="width: 300px;"><br>
-                    *上架時間:<input name="beginTime" type="date" required><br>
-                    *下架時間:<input name="endTime" type="date" required><br>
+                    *上架時間:<input name="beginTime" id="beginTime" type="date" required><br>
+                    *下架時間:<input name="endTime" id="endTime"type="date" required><br>
                 </div>
                 <!--<button type="submit" class="btn btn-info">確定送出</button>-->
             
@@ -42,7 +42,7 @@
             <div id="dialog" class="dialog">
                 確定發布?<br>
                 <button type="button" onclick="closeDialog();" class="close">再修改一下</button>
-                <button type="submit" class="btn btn-info">確定送出</button>
+                <button type="button" value="submit" class="btn btn-info" onclick="checkdate();">確定送出</button>
             </div>
             <a href="/PostController/index.php"><button type="button" class="btn btn-info">返回</button></a>
         </div>
@@ -66,4 +66,18 @@
     .catch( error => {
         console.error( error );
     } );
+
+    function checkdate(){
+        var start =new Date(document.getElementById("beginTime").value);
+        var end =new Date(document.getElementById("endTime").value);
+        if (start >= end){
+        alert("開始日期不可以晚於結束日期");
+        dialog.style.display="none";
+        return false;
+        }
+        else{
+        document.getElementById("form").submit(); 
+        }
+        
+    }
 </script>
