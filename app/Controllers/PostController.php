@@ -59,7 +59,12 @@ class PostController extends BaseController
     }
     public function onlyapply()
     {
-        return view('posts/onlyapply');
+        $model = new Post();
+
+        $data = [
+            'posts' => $model->findAll()
+        ];
+        return view('posts/onlyapply',$data);
     }
     public function marquee()
     {
