@@ -13,7 +13,7 @@ only個申
     <body>
         <h2>文章列表</h2>
         <a href="/PostController/article_list"><button type="button" class="btn btn-info">回到文章列表</button></a>
-        <a href="/PostController/onlyapply"><button type="button" class="btn btn-info">只顯示個申系統</button></a><br>
+        <a href="/PostController/onlystar"><button type="button" class="btn btn-info">只顯示繁星系統</button></a><br>
         <?php
         if(!empty($posts)){
             foreach($posts as $posts_item){

@@ -1,1 +1,1 @@
-<marquee direction="left" height="30" scrollamount="10" behavior="alternate">跑馬燈測試</marquee>
+<marquee direction="left" height="30" scrollamount="10" behavior="alternate"><?php echo ''.$posts.''; ?></marquee>

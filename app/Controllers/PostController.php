@@ -68,6 +68,10 @@ class PostController extends BaseController
     }
     public function marquee()
     {
-        return view('posts/marquee');
+        $data = [
+            'posts' => "測試用的"
+        ];
+        return view('posts/marquee',$data);
     }
+
 }
