@@ -8,6 +8,8 @@
         -->
         <link rel="stylesheet" href="/css/article_list.css">
         <script src="ckeditor/ckeditor.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
     </head>
     <body>
         <h2>全部文章列表</h2>
@@ -16,12 +18,11 @@
         <?php
         if(!empty($posts)){
             foreach($posts as $posts_item){
+                
                 echo '
                     <a href="/PostController/show/'.$posts_item['id'].'">'.$posts_item['star_or_apply'].'  ['.$posts_item['category'].']'.$posts_item['title'].'</a><br>
                 ';
             }
         }
-        require("newPost.php");
-        $data=mysql_query("select * from title limit 0,10");
         ?>
     </body>

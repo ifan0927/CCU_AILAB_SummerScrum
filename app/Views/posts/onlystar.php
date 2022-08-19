@@ -18,8 +18,9 @@ only繁星
         if(!empty($posts)){
             foreach($posts as $posts_item){
                 if($posts_item['star_or_apply'] == 1 ){
+                    $name = "繁星";
                     echo '
-                        <a href="/PostController/show/'.$posts_item['id'].'">'.$posts_item['star_or_apply'].'  ['.$posts_item['category'].']'.$posts_item['title'].'</a><br>
+                        <a href="/PostController/show/'.$posts_item['id'].'">'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'</a><br>
                     ';
                 }
             }

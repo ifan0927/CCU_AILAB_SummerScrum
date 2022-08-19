@@ -48,7 +48,14 @@ class PostController extends BaseController
     }
     public function onlystar()
     {
-        return view('posts/onlystar');
+        $model = new Post();
+
+        $data = [
+            'posts' => $model->findAll()
+        ];
+
+        //print_r($data);
+        return view('posts/onlystar',$data);
     }
     public function onlyapply()
     {
