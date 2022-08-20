@@ -6,10 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\User;
 class LoginController extends BaseController
 {
-    public function index()
-    {   
-        return view('login/index');
-    }
     public function login_page()
     {   
         $model = new User();
@@ -36,31 +32,27 @@ class LoginController extends BaseController
                 $name=$data_item['NAME'];
                 $password=$data_item['PASSWORD'];
                 $email=$data_item['MAIL'];
-                //echo"ID = ". $data_item['id'] . "<br/>\n";
-                //echo"user_name = ". $username . "<br/>\n";
+                $level=$data_item['Level'];
+                //echo"user = ". $data_item['USERNAME'] . "<br/>\n";
+                //echo"pwd = ". $data_item['PASSWORD'] . "<br/>\n";
                 //echo"password = ". $password . "<br/>\n";
                 if ($id!=""){
                     if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]){
-                    
-                        $_SESSION["user"]=$username;
-                        $_SESSION["level"]=$name;
-                        $_SESSION["email"]=$email;
-                      
+                        $user_info=[
+                            $_SESSION["user"]=$username,
+                            $_SESSION["level"]=$level,
+                            $_SESSION["email"]=$email
+                        ];
                        //echo "登入成功!!!!";
-                       return view('login/user_control');
-                       
-                       
-                           
+                       return redirect()->to('LoginController/user_control');                        
+
                     }
-                    else{
-                        //return view('login/login_page');
-                    }
-                  }else{
-                   echo "User not exist, please register to continue!";
                   }
-                  
             }
-             
+            return view('errors/loginerror');
+
+            
+            
              
            //echo "Operation done successfully\n";
              $model->close();
@@ -69,9 +61,22 @@ class LoginController extends BaseController
         }
     }
     public function registration()
-    {
-        
-        return view('login/registration');
+    { 
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 3){
+                return view('login/registration');
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }   
     }
     public function forgot_pw()
     {
@@ -86,31 +91,49 @@ class LoginController extends BaseController
             'NAME' => $this ->request->getVar('name'),
             'USERNAME' => $this ->request->getVar('username'),
             'MAIL' => $this ->request->getVar('email'),
-            'PASSWORD' => $this ->request->getVar('pwd')
-
+            'PASSWORD' => $this ->request->getVar('pwd'),
+            'Level' => $this ->request->getVar('level'),
         ];
         $users = $model->save($data);
-        return view('login/user_control');
+        return view('control/backindex');
         
         
     }
     public function user_control()
     {
         session_start();
-        
-        if(isset($_SESSION['user'])){
-           
+
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else{
             return view('login/user_control');
-          }else{
-            echo "請重新登入";
-             //停止進行後面的程式動作
-           }
-        
+        }
     }
     public function useradmin()
     {
         session_start();
-        return view('login/useradmin');
+        
+        $model = new User();
+
+        $data = [
+            'user' => $model->FindALL()
+        ];
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 3){
+                return view('login/useradmin',$data);
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }  
     }
     public function logout()
     {
@@ -121,7 +144,7 @@ class LoginController extends BaseController
         unset($_SESSION['user']);
         unset($_SESSION['level']);
         unset($_SESSION['email']);
-        return view('login/index');
+        return view('login/login_page');
     }
     public function editacc()
     {

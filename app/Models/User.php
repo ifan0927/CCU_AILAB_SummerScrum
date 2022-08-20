@@ -18,6 +18,7 @@ class User extends Model
         'NAME',
         'USERNAME',
         'MAIL',
+        'Level',
         'PASSWORD'
     ];
 

@@ -1,0 +1,14 @@
+.dialog{
+    position:fixed;top:200px;left:900px;width: 300px;height: 100px;
+    border: 2px solid;
+    background-color:gold;
+    padding: 3px;
+    display:none;
+}
+.dialog>.close{
+    padding: 2px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 200px;
+}

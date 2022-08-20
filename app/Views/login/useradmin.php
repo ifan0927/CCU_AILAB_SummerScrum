@@ -1,17 +1,48 @@
+<<<<<<< HEAD
 <?php
 use App\Models\User;
+=======
+<?=$this->extend("Layout/backend_layout")?>
+>>>>>>> ca7124ca44b2b5188b21c95b1306f9bbd01bf3b5
 
-$lvstr=array("無","教師","貼文管理者","系統管理員");
+<?=$this->section("content")?>
 
-if(isset($_SESSION['user']) && $_SESSION['level']>=3){
-   
-?>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>使用者管理</title>
+<div class="container" style="padding-top:75px;"><!--主要容器-->
+   <table class="table">
+         <thead>
+         <tr>
+            <th scope="col">#</th>
+            <th scope="col">暱稱</th>
+            <th scope="col">帳號</th>
+            <th scope="col">E-mail</th>
+            <th scope="col"></th>
+         </tr>
+         </thead>
+         <tbody>
+            <?php
+               if(!empty($user)){
+                  $rowcount = 1;
+                  foreach($user as $user_item){
+                        echo '
+                           <tr>
+                           <th scope"row">'.$rowcount.'</th>
+                           <td>'.$user_item['NAME'].'</td>
+                           <td>'.$user_item['USERNAME'].'</td>
+                           <td>'.$user_item['MAIL'].'</td>
+                           <td><a class="btn btn-primary" href="#" role="button">修改</a></td>
+                           <tr>
+                        ';
+                        $rowcount ++;                 
+                  }
+               }
+            ?>
+         </tbody>
+      </table>
+</div>
 
+<?=$this->endSection()?>
+
+<<<<<<< HEAD
 </head>
 <body>
 <table>
@@ -67,3 +98,7 @@ foreach($data as $data_item){
 </table>
 </body>
 </html>
+=======
+
+
+>>>>>>> ca7124ca44b2b5188b21c95b1306f9bbd01bf3b5
