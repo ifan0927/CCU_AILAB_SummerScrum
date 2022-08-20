@@ -5,21 +5,30 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\SysStar;
 use App\Models\Sysapply;
+use App\Models\User;
 
 class ControlController extends BaseController
 {
+    
     public function index()
     {
-        return view('control/backindex');
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else{
+            return view('control/backindex');
+        }   
     }
-
-
 
     public function test()
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('sys_star');
-        $data = $builder->get();
+        $model = new User();
+
+        $data = [
+            'users' => $model->findALL()
+        ];
         
         print_r($data);
         //return view('Layout/backend_layout');
@@ -27,12 +36,41 @@ class ControlController extends BaseController
 
     public function addsys() //資訊系統新增頁面
     {
-        return view('control/addsys');
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 2 || $_SESSION['level'] == 3){
+                return view('control/addsys');
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }   
     }
 
     public function star() //繁星頁面
     {
-        return view('control/star');
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 2 || $_SESSION['level'] == 3){
+                return view('control/star');
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }   
+
     }
 
     public function star_store() //繁星儲存資料
@@ -55,7 +93,21 @@ class ControlController extends BaseController
 
     public function apply() //申請頁面
     {
-        return view('control/apply');
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 2 || $_SESSION['level'] == 3){
+                return view('control/apply');
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }   
     } 
     public function apply_store() //申請儲存資料
     {
@@ -77,6 +129,7 @@ class ControlController extends BaseController
 
     public function sysbrowse() // 資訊系統瀏覽頁面
     {
+        session_start();
         $model_star = new SysStar();
         $model_apply = new Sysapply();
 
@@ -84,23 +137,39 @@ class ControlController extends BaseController
             's_posts' => $model_star->FindAll(),
             'a_posts' => $model_apply->FindAll()
         ];
-
-        
-        //print_r($apply);
-        return view('control/sysbrowse', $data);
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            return view('control/sysbrowse', $data);
+        }
     }
 
     public function sysmodify_star($post_id) //繁星系統修改頁面
-    {  
+    {   
+        session_start();
         $model = new SysStar();
 
         $data = [
             'posts' => $model->find($post_id)
         ];
-        
-        //print_r($data);
-        return view('control/star_modify', $data);
 
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 2 || $_SESSION['level'] == 3){
+                return view('control/star_modify', $data);
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        } 
     }
 
     public function storemodify_star($post_id) //儲存繁星修改資料
@@ -132,15 +201,27 @@ class ControlController extends BaseController
     }
 
     public function sysmodify_apply($post_id) //申請系統修改頁面
-    {  
+    {   
+        session_start();
         $model = new Sysapply();
 
         $data = [
             'posts' => $model->find($post_id)
         ];
-        
-        //print_r($data);
-        return view('control/apply_modify', $data);
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 2 || $_SESSION['level'] == 3){
+                return view('control/apply_modify', $data);
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }  
 
     }
 

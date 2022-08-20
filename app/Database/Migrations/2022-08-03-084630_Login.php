@@ -36,6 +36,11 @@ class Login extends Migration
                 'constraint' => '30',
                 'null' => True
         ],
+            'Level' => [
+                'type'=> 'INT',
+                'constraint' => '30',
+                'null' => True
+        ],
     
     ]);
     $this->forge->addKey('id',True);

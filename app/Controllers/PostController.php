@@ -7,13 +7,23 @@ use App\Models\Post;
 
 class PostController extends BaseController
 {
-    public function index()
-    {
-        return view('posts/index');
-    }
     public function newPost()
     {
-        return view('posts/newPost');
+        session_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect()->to('LoginController/login_page');
+        }
+        else
+        {
+            if ($_SESSION['level'] == 1 || $_SESSION['level'] == 3){
+                return view('posts/newPost');
+            }
+            else
+            {
+                return view('errors/levelerror');
+            }            
+        }   
     }
     public function store()
     {
@@ -33,7 +43,7 @@ class PostController extends BaseController
         $YN = $model->save($data);
 
         //return view('posts/article_list');
-        return redirect()->to('Postcontroller/article_list');
+        return redirect()->to('ControlController/index');
         //print_r($data);
     }
     public function article_list()

@@ -23,7 +23,7 @@ use CodeIgniter\Debug\Toolbar\Collectors\Views;
 <body>
 
 <div class="container">
-  <h2>登入系統</h2>
+  <h2>登入後台頁面</h2>
   <form role="form" method="post" action="/LoginController/login">
     <div class="form-group">
       <label for="usr_name">Username:</label>
@@ -52,6 +52,7 @@ use CodeIgniter\Debug\Toolbar\Collectors\Views;
       <button type="submit" class="btn btn-primary"> 登入 </button>
   </form>
 </div>
+
 
 
 </body>

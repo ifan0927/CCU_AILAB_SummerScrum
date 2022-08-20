@@ -1,13 +1,8 @@
 <h1>這裡是首頁</h1>
 
-<<<<<<< HEAD
 
-<a href="/PostController/" class="btn btn-primary">公告系統</a>
-<a href="/LoginController/index" class="btn btn-primary">登入系統</a>
-=======
 <a href="/PostController/newPost" class="btn btn-primary">公告系統</a>
 <a href="/PostController/" class="btn btn-primary">登入系統</a>
->>>>>>> dbfe9027a9381ecd4914ef5659d7c852c7eb1818
 <a href="/PostController/" class="btn btn-primary">控制系統</a>
 
 <?php

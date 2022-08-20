@@ -1,54 +1,76 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
-        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        -->
-        <link rel="stylesheet" href="/css/newPost.css">
-        <script src="ckeditor/ckeditor.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-    </head>
-    <body>
-        <h1>貼文建立!</h1>
-        <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        -->
-        <div>
-            <form id="form" action="/PostController/store" enctype="mutipart/form-data" method="POST">
-                <div>*系統選擇:
-                        <div required>
-                            <input type="radio" id="star_or_apply" name="star_or_apply" value="繁星"><label>繁星系統</lable>
-                            <input type="radio" id="star_or_apply" name="star_or_apply" value="個申"><label>個申系統</lable><br>
-                        </div>
-                        *文章種類:
-                        <select name="category" required>
-                        <option value="簡章訊息事項">簡章訊息事項</option>
-                        <option value="招生事務">招生事務</option>
-                        <option value="徵選資訊">徵選資訊</option>
-                        <option value="會議簡報">會議簡報</option>
-                        <option value="其他事項">其他事項</option>
-                        </select><br>
-                    *標題:<input name="title" style="width: 300px;" required><br>
-                    *內容:<textarea id="content" name="content"></textarea>
-                    選擇檔案:<input name="file" type="file"><br>
-                    新增連結:<input name="link" type="url" style="width: 300px;"><br>
-                    *上架時間:<input name="beginTime" id="beginTime" type="date" required><br>
-                    *下架時間:<input name="endTime" id="endTime"type="date" required><br>
-                </div>
-                <!--<button type="submit" class="btn btn-info">確定送出</button>-->
-            
-            <button type="button" onclick="showDialog();">發布</button>
-            <div id="dialog" class="dialog">
-                確定發布?<br>
-                <button type="button" onclick="closeDialog();" class="close">再修改一下</button>
-                <button type="button" value="submit" class="btn btn-info" onclick="checkdate();">確定送出</button>
-            </div>
-            <a href="/PostController/index.php"><button type="button" class="btn btn-info">返回</button></a>
+<?=$this->extend("Layout/backend_layout")?>
+
+<?=$this->section("content")?>
+
+<div class="container" align="center" style="margin-top:100px;"><!--主要容器-->
+    <form id="form" action="/PostController/store" enctype="mutipart/form-data" method="POST">
+        <div class="mb-3" style="width:600px" align="center">
+            <select class="form-select" aria-label="Default select example" id="star_or_apply" name="star_or_apply" required>
+                <option selected>選擇貼文系統</option>
+                <option  value="繁星">繁星系統</option>
+                <option  name="star_or_apply" value="個申">個申系統</option>
+            </select>
         </div>
-        </form>
-    </body>
-</html>
+        <div class="mb-3" style="width:600px" align="center">
+            <select class="form-select" aria-label="Default select example" name="category" required>
+                <option selected>選擇文章總類</option>
+                <option value="簡章訊息事項">簡章訊息事項</option>
+                <option value="招生事務">招生事務</option>
+                <option value="徵選資訊">徵選資訊</option>
+                <option value="會議簡報">會議簡報</option>
+                <option value="其他事項">其他事項</option>
+            </select>
+        </div>
+        <div class="mb-3" style="width:600px" align="center">
+            <label  class="form-label" >*標題</label>
+            <input type="text" class="form-control" name="title" required>
+        </div>
+        <div class="mb-3" style="width:600px" align="center">
+            <div>
+            <label  class="form-label" >*內容</label>
+            <textarea id="content"  name="content" required></textarea>
+            </div>
+        </div>
+        <div class="mb-3" style="width:600px" align="center">
+            <label  class="form-label">新增連結</label>
+            <input type="url" class="form-control" name="link" >
+        </div>
+        <div class="mb-3" style="width:600px" align="center">
+            <label class="form-label">*上架時間</label>
+            <input type="date" class="form-control" name="beginTime" id="beginTime" value="<?php echo date('Y-m-d'); ?>" required>
+        </div>
+        <div class="mb-3" style="width:600px" align="center">
+            <label class="form-label">*下架時間</label>
+            <input type="date" class="form-control" name="endTime" id="endTime"  required>
+        </div>
+        <div class="mb-3 form-check">
+            <label class="form-check-label" for="exampleCheck1">*為必須輸入內容</label>
+        </div>
+        <div align="center">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="btn btn-primary" align="center">發布</button>
+        </div>
+
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">確定送出</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            送出前請檢查內容是否錯誤
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            <button type="button" class="btn btn-primary" onclick="checkdate();">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
 <script>
     var dialog;
     window.onload=function(){
@@ -80,4 +102,20 @@
         }
         
     }
+    $.fn.modal.Constructor.prototype.enforceFocus = function () {
+    var $modalElement = this.$element;
+    $(document).on('focusin.modal', function (e) {
+        var $parent = $(e.target.parentNode);
+        if ($modalElement[0] !== e.target && !$modalElement.has(e.target).length
+            // add whatever conditions you need here:
+            &&
+            !$parent.hasClass('cke_dialog_ui_input_select') && !$parent.hasClass('cke_dialog_ui_input_text')) {
+            $modalElement.focus()
+        }
+    })
+};
+    CKEDITOR.replace('content');
 </script>
+
+
+<?=$this->endSection()?>
