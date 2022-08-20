@@ -1,7 +1,5 @@
 <?php
 
-$lvstr=array("無","教師","貼文管理者","系統管理員");
-
 if(isset($_SESSION['user'])){
     $user=$_SESSION['user'];
     $level=$_SESSION["level"];
@@ -25,8 +23,9 @@ if(isset($_SESSION['user'])){
  <table>
   <tr class="headbar">
     <td>歡迎 <?php echo $user; ?><a href="/LoginController/logout" class="btn btn-default">登出</a></td>
-    <td class="headNow"><a href="usercenter.php" class="btn btn-default">個人資料</a></td>
+    <td class="headNow"><a href="/LoginController/user_control" class="btn btn-default">個人資料</a></td>
 <?php
+  $lvstr=array("無","教師","貼文管理者","系統管理員");
   if($_SESSION['level']>=3){
 ?>
     <td><a href="/LoginController/useradmin" class="btn btn-default">使用者管理</a></td>
