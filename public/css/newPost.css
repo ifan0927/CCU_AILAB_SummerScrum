@@ -8,22 +8,7 @@
 .dialog>.close{
     padding: 2px;
 }
-.red{
-    color:red;
-}
-.bold{
-    font-weight: bold;
-}
-body{
-    
-    
-    
-    line-height: 30px;
-    border-color: rgb(255, 255, 255);
-    border-width: 5px;
-    border-radius: 5%;
-    border-style:dashed;
-    margin: 10% 35% ;
-    padding:20px;
-    width: fit-content;
+
+.ck-editor__editable_inline {
+    min-height: 200px;
 }
