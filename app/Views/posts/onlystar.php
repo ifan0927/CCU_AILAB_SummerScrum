@@ -20,7 +20,7 @@ only繁星
                 if($posts_item['star_or_apply'] == 1 ){
                     $name = "繁星";
                     echo '
-                        <a href="/PostController/show/'.$posts_item['id'].'">'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'</a><br>
+                    <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
             }

@@ -73,5 +73,15 @@ class PostController extends BaseController
         ];
         return view('posts/marquee',$data);
     }
+    public function article_modify($post_id)
+    {
+        $model = new Post();
+
+        $data = [
+            'posts' => $model->find($post_id)
+        ];
+
+        return view('posts/article_modify',$data);
+    }
 
 }
