@@ -1,94 +1,46 @@
-<?php
-if(isset($_SESSION['user']) && $_SESSION['level']>=3){
-?>
-<DOCTYPE html>
-<html>
-<head>
-<title>修改會員資料</title>
-<link href="user.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-</head>
-<body>
-<table>
- <tr class="headbar">
-   <td>歡迎<?php
-            echo $_SESSION['user']; 
-          ?>(<a href="logout.php" class="logout">登出</a>)
-   </td>
-   <td><a href="usercenter.php" class="headStr">個人資料</a></td>
-   <td class="headNow"><a href="useradmin.php" class="headStr">會員管理</a></td>
-   <td><a href="createacc.php" class="headStr">新增會員</a></td>
- </tr>
-</table><br /><br />
-<?php
-}else{
-  echo "非法登入!";
-  exit();
- }
-if(isset($_GET['u_acc'])){
-  $u_acc=$_GET['u_acc'];
-  $u_lv=$_GET['u_lv'];
-  $u_mail=$_GET['u_mail'];
-  $u_name=$_GET['u_name']; 
-}else{
-  $u_no="";
-  $u_acc="";
-  $u_lv="";
-  $u_nick="";
-  $u_avatar=""; 
-}
-if(isset($_POST['u_acc'])){
-  $u_no=$_POST['u_no'];
-  $u_acc=$_POST['u_acc'];
-  $u_pw=md5($_POST['u_pw']);
-  $u_lv=$_POST['u_lv'];
-  $u_nick=$_POST['u_nick'];
-  //$u_avatar=$_POST['u_avatar'];
-  
-} 
-      
-    
-?>
-<form action="/LoginController/change_info"  method="post"  enctype="multipart/form-data">
-<table class="edituser">
-  <tr>
-    <td class="title">帳號</td>
-    <td class="content">
-       <input name="u_acc" type="text" value="<?php echo $u_mail;?>" />
-    </td>
-       <input name="u_no" type="hidden" value="<?php ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td class="title">密碼</td>
-    <td class="content">
-      <input name="u_pw" type="password" value="*******" />
-    </td>
-  </tr>
-  <tr>
-    <td class="title">暱稱</td>
-    <td class="content">
-      <input name="u_name" type="text" value="<?php echo $u_name;?>" />
-    </td>
-  </tr>
-  <tr>
-    <td class="title">權限</td>
-    <td class="content">
-      <select name="u_lv">
-        <option value="1" <?php echo ($u_lv==1)?"selected":"";; ?>>教師</option>
-        <option value="2" <?php echo ($u_lv==2)?"selected":"";; ?>>貼文管理員</option>
-        <option value="3" <?php echo ($u_lv==3)?"selected":"";; ?>>系統管理者</option>
+<?=$this->extend("Layout/backend_layout")?>
+<?=$this->section("content")?>
+<div class="container" align="center" style="margin-top:100px;">
+  <form role="form" action="/LoginController/change_info/<?php if(!empty($user)){echo''.$user['id'].'';} ?>"  enctype="multipart/form-data" method="post">
+    <div class="mb-3" style="width:600px" align="center">
+      <h2>使用者資料管理</h2>
+    </div>
+    <div class="mb-3" style="width:600px" align="center">
+      <label  class="form-label" >*Name</label>
+      <input type="text" class="form-control" name="name" placeholder="輸入暱稱" value='<?php if(!empty($user)){echo''.$user['NAME'].'';} ?>' required>
+    </div>
+    <div class="mb-3" style="width:600px" align="center">
+      <label  class="form-label" >*登入帳號</label>
+      <input type="text" class="form-control" name="username" placeholder="輸入帳號" value='<?php if(!empty($user)){echo''.$user['USERNAME'].'';} ?>' required>
+    </div>
+    <div class="mb-3" style="width:600px" align="center">
+      <label  class="form-label" >*E-mail</label>
+      <input type="text" class="form-control" name="email" placeholder="輸入電子信箱" value='<?php if(!empty($user)){echo''.$user['MAIL'].'';} ?>' required>
+    </div>
+    <div class="mb-3" style="width:600px" align="center">
+      <label  class="form-label" >*密碼</label>
+      <input type="text" class="form-control" name="pwd" placeholder="輸入密碼" value='<?php if(!empty($user)){echo''.$user['PASSWORD'].'';} ?>' required>
+    </div>
+    <div class="mb-3" style="width:600px" align="center">
+      <select class="form-select" name="level" aria-label=".form-select-lg example"  required>
+        <option value = '<?php if(!empty($user)){echo''.$user['Level'].'';} ?>'><?php 
+         $lvstr=array("無","貼文系統管理員","作業資訊系統管理員","admin");
+         if(!empty($user)){echo''.$lvstr[$user['Level']].'';} ?></option>
+        <option value="1">貼文系統管理員</option>
+        <option value="2">作業資訊系統管理員系統</option>
+        <option value="3">admin</option>
       </select>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="text-align:center;">
-      <input name=""  type="submit" value="確認修改" />
-    </td>
-  </tr>
-</table>
-</form>
-</body>
-</html>
+    </div>
+    <div class="mb-3 form-check"><!--備註-->
+      <label class="form-check-label" for="exampleCheck1">*為必須輸入內容</label>
+    </div>
+    <div align="center">
+      <button class="btn btn-outline-secondary" herf="login/useradmin"align="center">返回</button>
+      <button class="btn btn-primary" align="center">Submit</button>
+    </div>
+  </form>
+</div>
+
+
+<?=$this->endSection()?>
