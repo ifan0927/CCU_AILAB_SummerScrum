@@ -10,7 +10,7 @@ use App\Models\User;
 class ControlController extends BaseController
 {
     
-    public function index()
+    public function backindex()
     {
         session_start();
         if(!isset($_SESSION['user']))
@@ -22,17 +22,12 @@ class ControlController extends BaseController
         }   
     }
 
-    public function test()
+    public function index()
     {
-        $model = new User();
-
-        $data = [
-            'users' => $model->findALL()
-        ];
-        
-        print_r($data);
-        //return view('Layout/backend_layout');
+        return view('front/index');
     }
+
+    
 
     public function addsys() //資訊系統新增頁面
     {
