@@ -9,11 +9,11 @@
 </head>
 <body>
     <h1>貼文修改</h1>
-    <form action="/PostController/store<?php if(!empty($posts)){echo''.$posts['id'].'';} ?>"  enctype="multipart/form-data" method="POST" id="form">
+    <form action="/PostController/store_modify/<?php if(!empty($posts)){echo''.$posts['id'].'';} ?>"  enctype="multipart/form-data" method="POST" id="form">
         <div>*系統選擇:
             <div required>
-                <input type="radio" id="star_or_apply" name="star_or_apply" value="1" <?php if($posts['star_or_apply'] == 1){echo'selected="selected"';} ?>><label>繁星系統</lable>
-                <input type="radio" id="star_or_apply" name="star_or_apply" value="2" <?php if($posts['star_or_apply'] == 2){echo'selected="selected"';} ?>><label>個申系統</lable><br>
+                <input type="radio" id="star_or_apply" name="star_or_apply" value="1" ><label <?php if($posts['star_or_apply'] = 1){echo'selected="selected"';} ?>>繁星系統</lable>
+                <input type="radio" id="star_or_apply" name="star_or_apply" value="2" ><label <?php if($posts['star_or_apply'] = 2){echo'selected="selected"';} ?>>個申系統</lable><br>
             </div>
             *文章種類:
             <select name="category" required>
@@ -24,8 +24,8 @@
             <option <?php if($posts['category'] == "其他事項"){echo'selected="selected"';} ?> value="其他事項">其他事項</option>
             </select><br>
                     *標題:<input name="title" style="width: 300px;" required value='<?php if(!empty($posts)){echo''.$posts['title'].'';} ?>'><br>
-                    *內容:<textarea id="content" name="content" ><?php if(!empty($posts)){echo''.$posts['content'].'';} ?></textarea>
-                    選擇檔案:<input name="file" type="file" value='<?php if(!empty($posts)){echo''.$posts['file'].'';} ?>'><br>
+                    *內容:<textarea id="content" name="content" ><?php if(!empty($posts)){echo''.$posts['content'].'';} ?></textarea><br>
+                    選擇檔案:<input name="file" type="file"><?php if(!empty($posts)){echo''.$posts['file'].'';} ?><br>
                     新增連結:<input name="link" type="url" style="width: 300px;" value='<?php if(!empty($posts)){echo''.$posts['link'].'';} ?>'><br>
                     *上架時間:<input name="beginTime" id="beginTime" type="date" required value='<?php if(!empty($posts)){echo''.$posts['beginTime'].'';} ?>'><br>
                     *下架時間:<input name="endTime" id="endTime"type="date" required value='<?php if(!empty($posts)){echo''.$posts['endTime'].'';} ?>'><br>

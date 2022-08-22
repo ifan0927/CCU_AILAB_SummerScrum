@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Post;
+use App\Models\Marquee;
 
 class PostController extends BaseController
 {
@@ -78,8 +79,10 @@ class PostController extends BaseController
     }
     public function marquee()
     {
+        $model = new Marquee();
+
         $data = [
-            'posts' => "測試用的"
+            'posts' => $model->findAll()
         ];
         return view('posts/marquee',$data);
     }
@@ -93,5 +96,37 @@ class PostController extends BaseController
 
         return view('posts/article_modify',$data);
     }
+    public function store_modify($post_id)
+    {
+        $model = new Post();
 
+        $data = [
+            'id' => $post_id,
+            'star_or_apply' => $this->request->getVar('star_or_apply'),
+            'category' => $this->request->getVar('category'),
+            'title' => $this->request->getVar('title'),
+            'content' => $this->request->getVar('content'),
+            'file' => $this->request->getVar('file'),
+            'link' => $this->request->getVar('link'),
+            'beginTime' => $this->request->getVar('beginTime'),
+            'endTime' => $this->request->getVar('endTime')
+        ];
+
+        $YN = $model->save($data);
+        //print_r($data);
+        return redirect()->to('PostController/article_list');
+    }
+    public function marquee_test()
+    {
+        $model = new Marquee();
+
+        $data = [
+            'marquee' => $this->request->getVar('marquee')
+        ];
+
+        //print_r($data);
+        $YN = $model->save($data);
+
+        return redirect()->to('PostController/marquee');
+    }
 }
