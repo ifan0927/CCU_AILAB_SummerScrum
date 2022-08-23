@@ -42,7 +42,7 @@
                 <a class="nav-link" href="/ControlController/addsys">作業資訊系統新增</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ControlController/sysbrowse">作業資訊系統瀏覽</a>
+                <a class="nav-link" href="/ControlController/ustarbrowse/1">作業資訊系統瀏覽</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/LoginController/logout">登出</a>

@@ -28,23 +28,52 @@
               <?php
                 if(!empty($ustar)){
                     $rowcount = 1;
+                    $pcount = 1;
+                    if ($page != 1){
+                        $pagestart = ($page -1) *10 +1;
+                        $pageend = $page * 10;
+                        }
+                    else{
+                        $pagestart = 1;
+                        $pageend = 10; 
+                    }
                     foreach($ustar as $posts_item){
-                          echo '
-                              <tr>
-                              <th scope"row">'.$rowcount.'</th>
-                              <td><a href="/ControlController/modify/1/'.$posts_item['id'].'">'.$posts_item['title'].'</a></td>
-                              <td>'.$posts_item['start'].'</td>
-                              <td>'.$posts_item['end'].'</td>
-                              <td><a class="btn btn-primary" href="/ControlController/delete/1/'.$posts_item['id'].'" role="button">刪除貼文</a></td>
-                              <tr>
-                          ';
-                          $rowcount ++;
+                        if ($rowcount == 11){
+                            break;
+                        }
+                        if ($pcount >= $pagestart && $pcount <= $pageend){
+                            echo '
+                            <tr>
+                            <th scope"row">'.$rowcount.'</th>
+                            <td><a href="/ControlController/modify/1/'.$posts_item['id'].'">'.$posts_item['title'].'</a></td>
+                            <td>'.$posts_item['start'].'</td>
+                            <td>'.$posts_item['end'].'</td>
+                            <td><a class="btn btn-primary" href="/ControlController/delete/1/'.$posts_item['id'].'" role="button">刪除貼文</a></td>
+                            <tr>
+                        ';
+                        $rowcount ++;
+                        }
+                        $pcount ++;
                         
                     }
                 }
               ?>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php
+                    $p = intval(($ustar_c / 10) + 1);
+                    $pagecount = 1;
+                    for ($i = 0 ; $i < $p ; $i++){
+                        echo'
+                        <li class="page-item"><a class="page-link" href="/ControlController/test/'.$pagecount.'">'.$pagecount.'</a></li>
+                        ';
+                        $pagecount ++;
+                    }
+                ?>
+            </ul>
+        </nav>
       </div>
     </div>
     </div> <!-- 大學繁星end -->

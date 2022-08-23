@@ -13,4 +13,5 @@ class Home extends BaseController
     {
         return view('front/star');
     }
+
 }
