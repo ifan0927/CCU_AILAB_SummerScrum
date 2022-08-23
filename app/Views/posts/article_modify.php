@@ -12,8 +12,8 @@
     <form action="/PostController/store_modify/<?php if(!empty($posts)){echo''.$posts['id'].'';} ?>"  enctype="multipart/form-data" method="POST" id="form">
         <div>*系統選擇:
             <div required>
-                <input type="radio" id="star_or_apply" name="star_or_apply" value="1" ><label <?php if($posts['star_or_apply'] = 1){echo'selected="selected"';} ?>>繁星系統</lable>
-                <input type="radio" id="star_or_apply" name="star_or_apply" value="2" ><label <?php if($posts['star_or_apply'] = 2){echo'selected="selected"';} ?>>個申系統</lable><br>
+                <input type="radio" id="star_or_apply" name="star_or_apply" value="1" <?php if($posts['star_or_apply'] == 1){echo'checked="true"';} ?>><label >繁星系統</lable>
+                <input type="radio" id="star_or_apply" name="star_or_apply" value="2" <?php if($posts['star_or_apply'] == 2){echo'checked="true"';} ?>><label >個申系統</lable><br>
             </div>
             *文章種類:
             <select name="category" required>

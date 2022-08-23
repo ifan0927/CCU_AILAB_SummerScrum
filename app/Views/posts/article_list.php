@@ -21,13 +21,17 @@
                 if($posts_item['star_or_apply'] == 1 ){
                     $name = "繁星";
                     echo '
-                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
+                        <a href="/PostController/article_delete/'.$posts_item['id'].'">刪除</a>
+                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>
+                        '.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
                 else{
                     $name ="個申";
                     echo '
-                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
+                        <a href="/PostController/article_delete/'.$posts_item['id'].'">刪除</a>
+                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>
+                        '.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
             }
