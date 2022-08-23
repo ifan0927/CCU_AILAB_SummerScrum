@@ -1,4 +1,3 @@
-only個申
 <!doctype html>
 <html lang="en">
     <head>
@@ -11,7 +10,7 @@ only個申
         <script src="ckeditor/ckeditor.js"></script>
     </head>
     <body>
-        <h2>文章列表</h2>
+        <h2>文章列表-個申</h2>
         <a href="/PostController/article_list"><button type="button" class="btn btn-info">回到文章列表</button></a>
         <a href="/PostController/onlystar"><button type="button" class="btn btn-info">只顯示繁星系統</button></a><br>
         <?php
@@ -20,10 +19,31 @@ only個申
                 if($posts_item['star_or_apply'] == 2 ){
                     $name = "個申";
                     echo '
-                    <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
+                    <button type="button" onclick="showDialog();">刪除</button>
+                    <div id="dialog" class="dialog">
+                        確定刪除?<br>
+                        <button type="button" onclick="closeDialog();" class="close">再考慮一下</button>
+                        <a href="/PostController/article_delete/'.$posts_item['id'].'"><button type="button">刪除</button></a>
+                    </div>
+                    <a href="/PostController/article_modify/'.$posts_item['id'].'"><button type="button">修改</button></a>
+                    '.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
             }
         }
         ?>
     </body>
+    <script>
+        var dialog;
+        window.onload=function(){
+            dialog=document.getElementById("dialog");
+        };
+        function showDialog(){
+            dialog.style.display="block";
+        }
+        function closeDialog(){
+            dialog.style.display="none";
+        }
+
+
+    </script>
