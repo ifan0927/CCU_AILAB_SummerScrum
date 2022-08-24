@@ -2,8 +2,6 @@
 
 use CodeIgniter\Debug\Toolbar\Collectors\Views;
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

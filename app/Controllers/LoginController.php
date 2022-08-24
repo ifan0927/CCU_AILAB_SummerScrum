@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Controllers\BaseController;
 use App\Models\User;
 class LoginController extends BaseController
@@ -194,7 +192,6 @@ class LoginController extends BaseController
         
         return redirect()->to('LoginController/useradmin');
     }
-
     public function captcha() 
     {  
         session_start();
@@ -226,6 +223,4 @@ class LoginController extends BaseController
         imagepng($image);
         imagedestroy($image);  //少這行畫面會全黑
     }
-
-    
 }
