@@ -397,7 +397,7 @@ class ControlController extends BaseController
         $db = db_connect();
         $query = $db->query('SELECT * FROM ustar');
 
-        $data = [ //抓取繁星,申請資料
+        $data = [ //抓取繁星資料
             'ustar' => $ustar->FindAll(),
             'count' => $query->getNumRows(),
             'page' => $page

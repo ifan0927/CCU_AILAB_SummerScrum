@@ -7,8 +7,8 @@
         <div class="mb-3" style="width:600px" align="center">
             <select class="form-select" aria-label="Default select example" id="star_or_apply" name="star_or_apply" required>
                 <option selected>選擇貼文系統</option>
-                <option  value="繁星">繁星系統</option>
-                <option  name="star_or_apply" value="個申">個申系統</option>
+                <option  name="star_or_apply" value="1">繁星系統</option>
+                <option  name="star_or_apply" value="2">個申系統</option>
             </select>
         </div>
         <div class="mb-3" style="width:600px" align="center">
