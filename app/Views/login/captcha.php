@@ -1,56 +1,45 @@
 <?php
-    if(!isset($_SESSION)){ session_start(); } //檢查SESSION是否啟動
-        $_SESSION['check_word'] = ''; //設置存放檢查碼的SESSION
-
-    //設置定義為圖片
-    header("Content-type: image/PNG");
-
-    /*
-      imgcode($nums,$width,$high)
-      設置產生驗證碼圖示的參數
-      $nums 生成驗證碼個數
-      $width 圖片寬
-      $high 圖片高
-    */
-    imgcode(5,120,30);
-
-    //imgcode的function
-    function imgcode($nums,$width,$high) {
-       
-        //去除了數字0和1 字母小寫O和L，為了避免辨識不清楚
-        $str = "23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMOPQRSTUBWXYZ";
-        $code = '';
-        for ($i = 0; $i < $nums; $i++) {
-            $code .= $str[mt_rand(0, strlen($str)-1)];
-        }
-
-        $_SESSION['check_word'] = $code;
-
-        //建立圖示，設置寬度及高度與顏色等等條件
-        $image = imagecreate($width, $high);
-        $black = imagecolorallocate($image, mt_rand(0, 200), mt_rand(0, 200), mt_rand(0, 200));
-        $border_color = imagecolorallocate($image, 21, 106, 235);
-        $background_color = imagecolorallocate($image, 235, 236, 237);
-
-        //建立圖示背景
-        imagefilledrectangle($image, 0, 0, $width, $high, $background_color);
-
-        //建立圖示邊框
-        imagerectangle($image, 0, 0, $width-1, $high-1, $border_color);
-
-        //在圖示布上隨機產生大量躁點
-        for ($i = 0; $i < 80; $i++) {
-            imagesetpixel($image, rand(0, $width), rand(0, $high), $black);
-        }
-       
-        $strx = rand(3, 8);
-        for ($i = 0; $i < $nums; $i++) {
-            $strpos = rand(1, 6);
-            imagestring($image, 5, $strx, $strpos, substr($code, $i, 1), $black);
-            $strx += rand(10, 30);
-        }
-
-        imagepng($image);
-        imagedestroy($image);
+session_start();
+getCode(4,60,20);
+function getCode($num,$w,$h) {
+    $code = "";
+    for ($i = 0; $i < $num; $i  ) {
+        $code .= rand(0, 9);
     }
+    //4位驗證碼也可以用rand(1000,9999)直接生成
+    //將生成的驗證碼寫入session，備驗證時用
+    $_SESSION["helloweba_num"] = $code;
+    //建立圖片，定義顏色值
+    header("Content-type: image/PNG");
+    $im = imagecreate($w, $h);
+    $black = imagecolorallocate($im, 0, 0, 0);
+    $gray = imagecolorallocate($im, 200, 200, 200);
+    $bgcolor = imagecolorallocate($im, 255, 255, 255);
+    //填充背景
+    imagefill($im, 0, 0, $gray);
+    //畫邊框
+    imagerectangle($im, 0, 0, $w-1, $h-1, $black);
+    //隨機繪製兩條虛線，起干擾作用
+    $style = array ($black,$black,$black,$black,$black,$gray,$gray,$gray,$gray,$gray);
+    imagesetstyle($im, $style);
+    $y1 = rand(0, $h);
+    $y2 = rand(0, $h);
+    $y3 = rand(0, $h);
+    $y4 = rand(0, $h);
+    imageline($im, 0, $y1, $w, $y3, IMG_COLOR_STYLED);
+    imageline($im, 0, $y2, $w, $y4, IMG_COLOR_STYLED);
+    //在畫布上隨機生成大量黑點，起干擾作用;
+    for ($i = 0; $i < 80; $i  ) {
+        imagesetpixel($im, rand(0, $w), rand(0, $h), $black);
+    }
+    //將數字隨機顯示在畫布上,字元的水平間距和位置都按一定波動範圍隨機生成
+    $strx = rand(3, 8);
+    for ($i = 0; $i < $num; $i  ) {
+        $strpos = rand(1, 6);
+        imagestring($im, 5, $strx, $strpos, substr($code, $i, 1), $black);
+        $strx  = rand(8, 12);
+    }
+    imagepng($im);//輸出圖片
+    imagedestroy($im);//釋放圖片所佔記憶體
+}
 ?>

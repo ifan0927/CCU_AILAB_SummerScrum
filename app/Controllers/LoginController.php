@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Controllers\BaseController;
 use App\Models\User;
 class LoginController extends BaseController
@@ -33,16 +31,16 @@ class LoginController extends BaseController
                 $password=$data_item['PASSWORD'];
                 $email=$data_item['MAIL'];
                 $level=$data_item['Level'];
-                //echo"user = ". $data_item['USERNAME'] . "<br/>\n";
-                //echo"pwd = ". $data_item['PASSWORD'] . "<br/>\n";
-                //echo"password = ". $password . "<br/>\n";
+               
                 if ($id!=""){
-                    if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]){
+                    if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]&&$_SESSION['check_word'] == $_POST['checkword']){
+                        $_SESSION['check_word'] = '';
                         $user_info=[
                             $_SESSION["user"]=$username,
                             $_SESSION["level"]=$level,
                             $_SESSION["email"]=$email
                         ];
+
                        //echo "登入成功!!!!";
                        return redirect()->to('LoginController/user_control');                        
 
@@ -194,7 +192,6 @@ class LoginController extends BaseController
         
         return redirect()->to('LoginController/useradmin');
     }
-
     public function captcha() 
     {  
         session_start();
@@ -226,6 +223,4 @@ class LoginController extends BaseController
         imagepng($image);
         imagedestroy($image);  //少這行畫面會全黑
     }
-
-    
 }

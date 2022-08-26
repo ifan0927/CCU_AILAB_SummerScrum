@@ -23,7 +23,9 @@
                 <div class="col-6 col-md-4"></div>
             </div>
             <div class="row" align="center" >
+
                 <img src="/front/index/big.png" style="width: 600px;;height: 700px;;margin:auto;" >
+
             </div>
             <!-- Columns are always 50% wide, on mobile and desktop -->
             <div class="row">
