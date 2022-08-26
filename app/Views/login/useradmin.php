@@ -26,7 +26,7 @@
                            <td>'.$user_item['MAIL'].'</td>
                            <td>'.$lvstr[$user_item['Level']].'</td>
                            <td><a class="btn btn-primary" href="/LoginController/editacc/'.$user_item['id'].'" role="button">修改</a></td>
-                           <td><a type="button" class="btn btn-default"  data-bs-toggle="modal" data-bs-target="#exampleModal" role="button" >刪除</a></td>
+                           <td><a type="button" class="btn btn-default"   role="button" >刪除</a></td>
                            <tr>
                         ';
                         $rowcount ++;                 

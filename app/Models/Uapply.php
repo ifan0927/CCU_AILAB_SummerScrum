@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SysStar extends Model
+class Uapply extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'sys_star';
+    protected $table            = 'uapply';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,12 +15,12 @@ class SysStar extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'syscatagory_star',
-        'systitle_star',
-        'sysurl_star',
-        'syscontent_star',
-        'sysstart_star',
-        'sysend_star',
+        'title',
+        'url',
+        'file',
+        'content',
+        'start',
+        'end'
     ];
 
     // Dates

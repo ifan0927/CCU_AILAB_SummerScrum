@@ -31,16 +31,16 @@ class LoginController extends BaseController
                 $password=$data_item['PASSWORD'];
                 $email=$data_item['MAIL'];
                 $level=$data_item['Level'];
-                //echo"user = ". $data_item['USERNAME'] . "<br/>\n";
-                //echo"pwd = ". $data_item['PASSWORD'] . "<br/>\n";
-                //echo"password = ". $password . "<br/>\n";
+               
                 if ($id!=""){
-                    if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]){
+                    if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]&&$_SESSION['check_word'] == $_POST['checkword']){
+                        $_SESSION['check_word'] = '';
                         $user_info=[
                             $_SESSION["user"]=$username,
                             $_SESSION["level"]=$level,
                             $_SESSION["email"]=$email
                         ];
+
                        //echo "登入成功!!!!";
                        return redirect()->to('LoginController/user_control');                        
 

@@ -11,8 +11,13 @@
 
 </head>
 <body>
-    <div class="alert alert-danger" role="alert">
-        帳號密碼錯誤!
+    <div class="container" style="margin-top:100px; width:500px">
+        <div class="alert alert-danger" align="center" role="alert">
+        <h4 class="alert-heading">帳號密碼錯誤!</h4>
+            <p>請確定你的帳號密碼是否輸入正確，若需要取回密碼請聯絡系統管理員</p>
+        <hr>
+            <a type="button" class="btn btn-danger" href="/LoginController/login_page" role="button">返回</a>
+        </div>
     </div>
 </body>
 </html>

@@ -11,8 +11,13 @@
 
 </head>
 <body>
-    <div class="alert alert-danger" role="alert">
-        使用者權限不足!
+    <div class="container" style="margin-top:100px; width:500px">
+        <div class="alert alert-danger" align="center" role="alert">
+        <h4 class="alert-heading">使用者權限不足!</h4>
+            <p>請確定你的帳號是否有相關系統之權限，若需要申請權限請聯絡系統管理員</p>
+        <hr>
+            <a type="button" class="btn btn-danger" href="/ControlController/backindex" role="button">返回</a>
+        </div>
     </div>
 </body>
 </html>

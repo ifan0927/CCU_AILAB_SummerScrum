@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Sysapply extends Model
+class Ustar extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'sys_apply';
+    protected $table            = 'ustar';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,12 +15,12 @@ class Sysapply extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'syscatagory_apply',
-        'systitle_apply',
-        'sysurl_apply',
-        'syscontent_apply',
-        'sysstart_apply',
-        'sysend_apply',
+        'title',
+        'url',
+        'file',
+        'content',
+        'start',
+        'end'
     ];
 
     // Dates

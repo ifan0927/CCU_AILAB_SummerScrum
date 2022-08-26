@@ -19,11 +19,11 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
         
-        </button>
+
             <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
             
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <a class="navbar-brand mx-auto" href="/ControlController/index">甄選會後台</a>
+            <a class="navbar-brand mx-auto" href="/ControlController/backindex">甄選會後台</a>
             
             <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
             <li class="nav-item">
@@ -42,7 +42,7 @@
                 <a class="nav-link" href="/ControlController/addsys">作業資訊系統新增</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ControlController/sysbrowse">作業資訊系統瀏覽</a>
+                <a class="nav-link" href="/ControlController/ustarbrowse/1">作業資訊系統瀏覽</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/LoginController/logout">登出</a>
