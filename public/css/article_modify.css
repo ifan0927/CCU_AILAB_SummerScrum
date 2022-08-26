@@ -1,8 +1,9 @@
 .dialog{
-    position:fixed;top:200px;left:900px;width: 300px;height: 100px;
-    border: 2px solid;
-    background-color:gold;
-    padding: 3px;
+    position:fixed;top:200px;left:700px;width: 300px;height: 100px;
+    border-radius: 10px;
+    border: 2px cadetblue;
+    background-color:cornflowerblue;
+    padding: 10px;
     display:none;
 }
 .dialog>.close{

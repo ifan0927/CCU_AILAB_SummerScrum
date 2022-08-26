@@ -21,16 +21,44 @@
                 if($posts_item['star_or_apply'] == 1 ){
                     $name = "繁星";
                     echo '
-                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
+                        <button type="button" onclick="showDialog();">刪除</button>
+                        <div id="dialog" class="dialog">
+                            確定刪除?<br>
+                            <button type="button" onclick="closeDialog();" class="close">再考慮一下</button>
+                            <a href="/PostController/article_delete/'.$posts_item['id'].'">刪除</a>
+                        </div>
+                        <a href="/PostController/article_modify/'.$posts_item['id'].'"><button type="button">修改</button></a>
+                        '.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
                 else{
                     $name ="個申";
                     echo '
-                        <a href="/PostController/article_modify/'.$posts_item['id'].'">修改</a>'.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
+                    <button type="button" onclick="showDialog();">刪除</button>
+                    <div id="dialog" class="dialog">
+                        確定刪除?<br>
+                        <button type="button" onclick="closeDialog();" class="close">再考慮一下</button>
+                        <a href="/PostController/article_delete/'.$posts_item['id'].'"><button type="button">刪除</button></a>
+                    </div>
+                    <a href="/PostController/article_modify/'.$posts_item['id'].'"><button type="button">修改</button></a>
+                    '.$name.'  ['.$posts_item['category'].']'.$posts_item['title'].'<br>
                     ';
                 }
             }
         }
         ?>
     </body>
+    <script>
+        var dialog;
+        window.onload=function(){
+            dialog=document.getElementById("dialog");
+        };
+        function showDialog(){
+            dialog.style.display="block";
+        }
+        function closeDialog(){
+            dialog.style.display="none";
+        }
+
+
+    </script>

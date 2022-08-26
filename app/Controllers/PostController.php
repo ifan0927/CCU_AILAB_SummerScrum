@@ -132,4 +132,12 @@ class PostController extends BaseController
 
         return redirect()->to('PostController/marquee');
     }
+    public function article_delete($post_id)
+    {
+        $model = new Post();
+
+        $YN = $model->delete($post_id);
+
+        return redirect()->to('PostController/article_list');
+    }
 }
