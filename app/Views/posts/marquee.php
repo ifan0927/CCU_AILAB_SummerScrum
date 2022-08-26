@@ -1,20 +1,24 @@
-<h2>跑馬燈修改</h2>
-<form action="/PostController/marquee_test" enctype="mutipart/form-data" method="POST">
-    <textarea name="marquee" id="" cols="70" rows="5"></textarea>
-    <button type="submit">測試/送出</button>
-    <marquee direction="left" height="30" width="500" scrollamount="10" behavior="alternate"></marquee>
-</form>
+<?=$this->extend("Layout/backend_layout")?>
 
-<!--<h3>歷史紀錄</h3>
-<?php
-if(!empty($posts)){
-    foreach($posts as $posts_item){
-        echo '
-        ['.$posts_item['id'].']    '.$posts_item['marquee'].'  <br>
-        ';
-        }
-}
-?>-->
-<!--顯示最新的跑馬燈 重整送出之後變成最新的
-顯示現有的跑馬燈 資料庫只放一個 
->>>>>>> b3134ae674000678a69f10117b66dd943d242368
+<?=$this->section("content")?>
+
+<div class="container" style="margin-top:100px; width:500px">
+  <div class="card border-dark mb-3" style="max-width: 30rem;">
+    <div class="card-header">跑馬燈修改</div>
+    <div class="card-body text-dark">
+    <form role="form" method="post" action="/PostController/marquee_test">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">輸入跑馬燈:</label>
+        <input type="texareat" class="form-control" id="marquee" name="marquee" >
+      </div>
+      <button type="submit" class="btn btn-primary">測試/送出</button>
+    </form>
+    </div>
+    <div class="card-footer text-muted">現行跑馬燈內容</div>
+    <marquee class="pt-1 bg-info" direction="right" height="30" scrollamount="5" behavior="alternate"><?php echo $marquee; ?></marquee>
+  </div>
+</div>
+
+
+<?=$this->endSection()?>
+

@@ -33,17 +33,17 @@
   </li>
 </ul>
 <div class="container-fleuid  ps-0 pe-0">
-  <div class="row">
-    <div class="col-2 bg-secondary ps-3" align="center">
+  <div class="row" style="height:645px;" >
+    <div class="col-2 bg-secondary ps-3 pt-5" align="center">
         <ul class="nav flex-column">
             <li class="nav-item dropend">
                 <a class="nav-link text-white " data-bs-toggle="dropdown" aria-current="page" href="#">訊息公告</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">簡章訊息事項</a></li>
-                  <li><a class="dropdown-item" href="#">招生試務</a></li>
-                  <li><a class="dropdown-item" href="#">甄選資訊</a></li>
-                  <li><a class="dropdown-item" href="#">會議簡報</a></li>
-                  <li><a class="dropdown-item" href="#">其他事項</a></li>
+                  <li><a class="dropdown-item" href="/Home/news/1">簡章訊息事項</a></li>
+                  <li><a class="dropdown-item" href="/Home/admission/1">招生試務</a></li>
+                  <li><a class="dropdown-item" href="/Home/audition/1">甄選資訊</a></li>
+                  <li><a class="dropdown-item" href="/Home/meeting/1">會議簡報</a></li>
+                  <li><a class="dropdown-item" href="/Home/other/1">其他事項</a></li>
                 </ul>
             </li>
             <li class="nav-item ">

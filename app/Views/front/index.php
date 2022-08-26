@@ -23,12 +23,12 @@
                 <div class="col-6 col-md-4"></div>
             </div>
             <div class="row" align="center" >
-                <img src="/front/index/big.png" width="100%" height:700px object-fit="cover;">
+                <img src="/front/index/big.png" style="width: 600px;;height: 700px;;margin:auto;" >
             </div>
             <!-- Columns are always 50% wide, on mobile and desktop -->
             <div class="row">
-                <div class="col-6" align="center">
-                    <a href="/home/star"><button type="button" class="btn btn-light btn-lg">繁星推薦</button></a>
+                <div class="col-6 " align="center">
+                    <a href="/home/star/1"><button type="button" class="btn btn-light btn-lg">繁星推薦</button></a>
                 </div>
                
                 <div class="col-6" align="center">
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-info">
+    <footer class="footer pb-5 pt-5 mt-auto py-3 bg-info">
         <div class="container" align="center">
             <span class="text-white" >621301嘉義縣民雄鄉大學路一段168號</span>
         </div>

@@ -2,9 +2,9 @@
 
 <?=$this->section("content")?>
 
-<h1>Welcome to About us page</h1>
-<p>
-    This is a sample page of our website
-</p>
+<div class="container" style="margin-top:100px">
+    <h3 align="center">前台預覽</h3>
+    <iframe src="http://localhost:8080/" width="100%" height="800" style="border:1px solid black;"></iframe>
+</div>
 
 <?=$this->endSection()?>
