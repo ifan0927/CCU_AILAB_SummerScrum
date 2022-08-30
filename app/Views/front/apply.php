@@ -1,4 +1,4 @@
-<?=$this->extend("Layout/f_starlayout")?>
+<?=$this->extend("Layout/f_applylayout")?>
 
 <?=$this->section("content")?>
 <div class="container mt-3 pt-5" sytle="height=1200px;">
@@ -27,7 +27,7 @@
                         <tr>
                         <td  class="col-sm-1">'.$posts_item->beginTime.'</td>
                         <td  class="col-sm-1">'.$posts_item->category.'</td>
-                        <td  class="col-sm-5"><a href="/Home/article/'.$posts_item->id.'">'.$posts_item->title.'</a></td> 
+                        <td  class="col-sm-5"><a href="/Home/a_article/'.$posts_item->id.'">'.$posts_item->title.'</a></td> 
                         <tr>
                     ';
                     $rowcount ++;
@@ -52,7 +52,7 @@
                 $pagecount = 1;
                 for ($i = 0 ; $i < $p ; $i++){
                     echo'
-                    <li class="page-item"><a class="page-link" href="/Home/star/'.$pagecount.'">'.$pagecount.'</a></li>
+                    <li class="page-item"><a class="page-link" href="/Home/apply/'.$pagecount.'">'.$pagecount.'</a></li>
                     ';
                     $pagecount ++;
                 }

@@ -287,11 +287,12 @@ class PostController extends BaseController
     public function marquee()
     {
         $model = new Marquee();
-        $id = 1;
-        $data =  $model->find($id);
- 
+        $data = [
+            'marquee_1' => $model->find(1),
+            'marquee_2' => $model->find(2)
+        ];
 
-       //print_r($data);
+        //print_r($data);
         return view('posts/marquee',$data);
     }
     public function article_modify($post_id)
@@ -324,10 +325,26 @@ class PostController extends BaseController
         //print_r($data);
         return redirect()->to('PostController/article_list');
     }
-    public function marquee_test()
+    public function marquee_1()
     {
         $model = new Marquee();
         $id = 1;
+
+        $data = [
+            'id' => $id,
+            'marquee' => $this->request->getVar('marquee')
+        ];
+
+        //print_r($data);
+        $YN = $model->save($data);
+
+        return redirect()->to('PostController/marquee');
+    }
+
+    public function marquee_2()
+    {
+        $model = new Marquee();
+        $id = 2;
 
         $data = [
             'id' => $id,

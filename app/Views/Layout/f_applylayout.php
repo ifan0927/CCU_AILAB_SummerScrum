@@ -10,12 +10,12 @@
 </head>
 <body>
 <div class="container-fleuid ps-0 pe-0">
-  <div class="bg-dark p-4"  align="center">
-    <h5 class="text-black h4" ><a href="/Home/star/1"><img src="/front/index/logo.png"></a></h5>
-    <span class="text-white" >111 繁星推薦 大學之位為你預留</span>
+  <div class="bg-secondary p-4"  align="center">
+    <h5 class="text-black h4" ><a href="/Home/apply/1"><img src="/front/index/logo.png"></a></h5>
+    <span class="text-white" >111 申請入學 大學之位為你預留</span>
   </div>
 </div>  
-<ul class="nav bg-dark justify-content-center">
+<ul class="nav bg-secondary justify-content-center">
   <li class="nav-item">
     <a class="nav-link text-white" aria-current="page" href="#">校系分則查詢</a>
   </li>
@@ -32,21 +32,21 @@
     <a class="nav-link text-white" href="#">網路聲明放棄</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-white" href="/Home/apply/1">申請頁面</a>
+    <a class="nav-link text-white" href="/Home/star/1">繁星頁面</a>
   </li>
 </ul>
 <div class="container-fleuid  ps-0 pe-0">
   <div class="row" style="height:645px;" >
-    <div class="col-2 bg-secondary ps-3 pt-5" align="center">
+    <div class="col-2 bg-dark ps-3 pt-5" align="center">
         <ul class="nav flex-column">
             <li class="nav-item dropend">
                 <a class="nav-link text-white " data-bs-toggle="dropdown" aria-current="page" href="#">訊息公告</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/Home/news/1">簡章訊息事項</a></li>
-                  <li><a class="dropdown-item" href="/Home/admission/1">招生試務</a></li>
-                  <li><a class="dropdown-item" href="/Home/audition/1">甄選資訊</a></li>
-                  <li><a class="dropdown-item" href="/Home/meeting/1">會議簡報</a></li>
-                  <li><a class="dropdown-item" href="/Home/other/1">其他事項</a></li>
+                  <li><a class="dropdown-item" href="/Home/a_news/1">簡章訊息事項</a></li>
+                  <li><a class="dropdown-item" href="/Home/a_admission/1">招生試務</a></li>
+                  <li><a class="dropdown-item" href="/Home/a_audition/1">甄選資訊</a></li>
+                  <li><a class="dropdown-item" href="/Home/a_meeting/1">會議簡報</a></li>
+                  <li><a class="dropdown-item" href="/Home/a_other/1">其他事項</a></li>
                 </ul>
             </li>
             <li class="nav-item ">
@@ -95,10 +95,10 @@
                 <a class="nav-link text-white" href="#">歷年資料</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link text-white"  href="/Home/highschool/1">高中作業資訊系統</a>
+                <a class="nav-link text-white"  href="/Home/highschool_a/1">高中作業資訊系統</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/Home/university/1">大學作業資訊系統</a>
+                <a class="nav-link text-white" href="/Home/university_a/1">大學作業資訊系統</a>
             </li>
         </ul>
     </div>
@@ -108,7 +108,7 @@
   </div>
 </div>
 <div class="container-fleuid ps-0 pe-0">
-  <div class="bg-dark p-4"  align="center">
+  <div class="bg-secondary p-4"  align="center">
     <u class="text-white " >服務時間：平日(周一至周五)：上午8:00~12:00；下午13:00~17:00。例假日及國定假日暫停服務。</u><br>
     <span class="text-white " >621301嘉義縣民雄鄉大學路一段168號 (05)2721799</span><br>
     <span class="text-white " >Copyright by CAC. All rights reserved.</span>

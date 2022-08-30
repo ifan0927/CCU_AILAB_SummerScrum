@@ -47,8 +47,25 @@
                         <td><a href="/PostController/modify/'.$posts_item->id.'">'.$posts_item->title.'</a></td> 
                         <td>'.$posts_item->beginTime.'</td>
                         <td>'.$posts_item->endTime.'</td>
-                        <td><a class="btn btn-danger" href="/PostController/delete/'.$posts_item->id.'" role="button">刪除貼文</a></td>
-                        <tr>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal'.$rowcount.'"  >刪除貼文</button></td>
+                        <div class="modal" tabindex="-1" id="modal'.$rowcount.'"  aria-hidden="true" >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">確認刪除</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>確定要刪除此系統嗎?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">再想想</button>
+                                    <a href="/PostController/delete/'.$posts_item->id.'"><button type="button" class="btn btn-primary">刪除</button></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <tr>  
                     ';
                     $rowcount ++;
                     }

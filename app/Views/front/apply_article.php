@@ -1,4 +1,4 @@
-<?=$this->extend("Layout/f_starlayout")?>
+<?=$this->extend("Layout/f_applylayout")?>
 
 <?=$this->section("content")?>
 <div class="container mt-3 pt-5" sytle="height=1200px;">
@@ -12,11 +12,12 @@
         <?php
             if ($posts['link'] != NULL || $posts['file'] != NULL ){
                 echo '
-                    <div class="card-footer text-muted">
-                        <a href="'.$posts['link'].'">連結網站</a><br>
-                        <a href="'.ROOTPATH.'./public/post_file/star/'.$posts['file'].'">下載附件</a>
-                    </div>
-                ';
+                <div class="card-footer text-muted">
+                    <a href="'.$posts['link'].'">連結網站</a><br>
+                    <a href="'.ROOTPATH.'./public/post_file/apply/'.$posts['file'].'">下載附件</a>
+
+                </div>
+            ';
             }
             else if ($posts['link'] != NULL && $posts['file'] == NULL ){
                 echo '
@@ -28,10 +29,11 @@
             else if ($posts['link'] == NULL && $posts['file'] != NULL ){
                 echo '
                     <div class="card-footer text-muted">
-                        <a href="'.ROOTPATH.'./public/post_file/star/'.$posts['file'].'">下載附件</a>
+                        <a href="'.ROOTPATH.'./public/post_file/apply/'.$posts['file'].'">下載附件</a>
                     </div>
                 ';
             }
+            
         ?>
     </div>
 

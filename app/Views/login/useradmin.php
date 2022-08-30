@@ -9,6 +9,7 @@
             <th scope="col">帳號</th>
             <th scope="col">E-mail</th>
             <th scope="col">權限</th>
+            <th></th>
          </tr>
          </thead>
          <tbody>
@@ -25,9 +26,25 @@
                            <td>'.$user_item['USERNAME'].'</td>
                            <td>'.$user_item['MAIL'].'</td>
                            <td>'.$lvstr[$user_item['Level']].'</td>
-                           <td><a class="btn btn-primary" href="/LoginController/editacc/'.$user_item['id'].'" role="button">修改</a></td>
-                           <td><a type="button" class="btn btn-default"   role="button" >刪除</a></td>
-                           <tr>
+                           <td><a class="btn btn-primary" href="/LoginController/editacc/'.$user_item['id'].'" role="button">修改</a><a class="btn btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#modal'.$rowcount.'"  role="button" >刪除</a></td>
+                           <div class="modal" tabindex="-1" id="modal'.$rowcount.'"  aria-hidden="true" >
+                              <div class="modal-dialog">
+                                 <div class="modal-content">
+                                 <div class="modal-header">
+                                       <h5 class="modal-title">確認刪除</h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                       <p>確定要刪除此帳號嗎?</p>
+                                 </div>
+                                 <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">再想想</button>
+                                       <a href="/LoginController/userdelete/'.$user_item['id'].'"><button type="button" class="btn btn-primary">刪除</button></a>
+                                 </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <tr> 
                         ';
                         $rowcount ++;                 
                   }

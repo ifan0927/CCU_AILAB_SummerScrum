@@ -34,7 +34,7 @@
                 </div>
                
                 <div class="col-6" align="center">
-                    <button type="button" class="btn btn-light btn-lg">申請入學</button>
+                    <a href="/home/apply/1"><button type="button" class="btn btn-light btn-lg">申請入學</button></a>
                 </div>
             </div>
         </div>
