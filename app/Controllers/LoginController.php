@@ -131,7 +131,7 @@ class LoginController extends BaseController
             }            
         }  
     }
-    public function logout()
+    public function logout() //登出功能
     {
         session_start();
         $_SESSION['user']=NULL;
@@ -142,7 +142,7 @@ class LoginController extends BaseController
         unset($_SESSION['email']);
         return view('login/login_page');
     }
-    public function editacc($post_id)
+    public function editacc($post_id) //使用者管理介面
     {
         session_start();
         
@@ -166,7 +166,7 @@ class LoginController extends BaseController
             }            
         }  
     }
-    public function change_info($post_id)
+    public function change_info($post_id) //使用者更改資料
     {
         session_start();
         $model = new User();
