@@ -1,7 +1,7 @@
 
 <?=$this->extend("Layout/backend_layout")?>
 <?=$this->section("content")?>
-<div class="container" align="center" style="margin-top:100px;">
+<div class="container" align="center" style="margin-top:20px;">
   <form role="form" action="/LoginController/change_info/<?php if(!empty($user)){echo''.$user['id'].'';} ?>"  enctype="multipart/form-data" method="post">
     <div class="mb-3" style="width:600px" align="center">
       <h2>使用者資料管理</h2>

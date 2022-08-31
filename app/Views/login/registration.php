@@ -1,7 +1,7 @@
 <?=$this->extend("Layout/backend_layout")?>
 
 <?=$this->section("content")?>
-<div class="container" align="center" style="margin-top:100px;">
+<div class="container" align="center" style="margin-top:20px;">
   <form role="form" action="/LoginController/store"  enctype="multipart/form-data" method="post">
     <div class="mb-3" style="width:600px" align="center">
       <h2>新增使用者</h2>
