@@ -4,7 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\User;
 class LoginController extends BaseController
 {
-    public function login_page()
+    public function login_page() //登入頁面跳轉
     {   
         $model = new User();
         $data=[
@@ -12,7 +12,7 @@ class LoginController extends BaseController
         ];
         return view('login/login_page',$data);
     }
-    public function login()
+    public function login() //登入身分驗證
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             session_start();
@@ -23,8 +23,9 @@ class LoginController extends BaseController
              } else {
                 //echo "Opened database successfully<br/>\n";
              }
-             
-            foreach($data as $data_item){
+
+             /*逐筆資料進行比對*/
+            foreach($data as $data_item){ 
                 $id=$data_item['id'];
                 $username=$data_item['USERNAME'];
                 $name=$data_item['NAME'];
@@ -32,6 +33,7 @@ class LoginController extends BaseController
                 $email=$data_item['MAIL'];
                 $level=$data_item['Level'];
                
+                
                 if ($id!=""){
                     if ($password==$_POST["pwd"]&&$username==$_POST["usr_name"]&&$_SESSION['check_word'] == $_POST['checkword']){
                         $_SESSION['check_word'] = '';
@@ -56,7 +58,7 @@ class LoginController extends BaseController
         
         }
     }
-    public function registration()
+    public function registration() //管理員新增使用者
     { 
         session_start();
         if(!isset($_SESSION['user']))
@@ -78,7 +80,7 @@ class LoginController extends BaseController
     {
         return view('login/forgot_pw');
     }
-    public function store()
+    public function store()  //使用者身分資料儲存
     {
         session_start();
         
@@ -95,7 +97,7 @@ class LoginController extends BaseController
         
         
     }
-    public function user_control()
+    public function user_control() //跳轉登入者資料顯示
     {
         session_start();
 
@@ -107,7 +109,7 @@ class LoginController extends BaseController
             return view('login/user_control');
         }
     }
-    public function useradmin()
+    public function useradmin() //使用者列表一覽
     {
         session_start();
         
@@ -212,7 +214,6 @@ class LoginController extends BaseController
         $_SESSION['check_word'] = $code;
         //建立圖示，設置寬度及高度
         $image = imagecreate($width, $high);
-        //$image=imagecreatefrompng("images/bg.png"); //或是自行準備底圖
         //設置圖像的顏色
         $black = imagecolorallocate($image, 0, 0, 0);  //黑色底色
         $white = imagecolorallocate($image, 255, 255, 255);  //白色文字

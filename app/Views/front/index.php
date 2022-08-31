@@ -24,7 +24,7 @@
             </div>
             <div class="row" align="center" >
 
-                <img src="/front/index/big.png" style="width: 600px;;height: 700px;;margin:auto;" >
+                <img src="/front/index/big.png" style="width: 300px;;height: 350px;;margin:auto;" >
 
             </div>
             <!-- Columns are always 50% wide, on mobile and desktop -->
